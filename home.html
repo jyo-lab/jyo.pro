@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STYLISTA - Home</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="app.js"></script>
+    <script defer src="auth.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#product">Product</a></li>
+                <li><a href="#trending">Trending</a></li>
+                <li><a href="#about">About Us</a></li>
+            </ul>
+            <div class="nav-auth">
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>
+                    <span>DARE</span>
+                    <span>TO BE</span>
+                    <span class="highlight">DIFFERENT</span>
+                </h1>
+                <p>Dare to be different with a style that only belongs to you.</p>
+                <button class="cta-button">Click to unleash your style..</button>
+            </div>
+            <div class="brand-mark">STYLISTA</div>
+            <div class="style-indicators">
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+                <span class="dot"></span>
+            </div>
+        </section>
+
+        <section class="style-quiz" id="styleQuiz">
+            <div class="quiz-container">
+                <div class="quiz-step" data-step="height">
+                    <h2>Height</h2>
+                    <div class="input-group">
+                        <input type="number" id="height" placeholder="Enter your height in cm">
+                    </div>
+                </div>
+
+                <div class="quiz-step" data-step="bodyType">
+                    <h2>Body Type</h2>
+                    <div class="body-types">
+                        <div class="type-option">
+                            <div class="type-image">
+                                <img src="assets/pear-type.svg" alt="Pear Shape" class="body-shape">
+                                <img src="assets/pear-outline.svg" alt="Pear Outline" class="shape-outline">
+                            </div>
+                            <span>Pear Shape</span>
+                            <p class="type-description">Wider at the hips than shoulders</p>
+                        </div>
+                        <div class="type-option">
+                            <div class="type-image">
+                                <img src="assets/triangle-type.svg" alt="Triangle" class="body-shape">
+                                <img src="assets/triangle-outline.svg" alt="Triangle Outline" class="shape-outline">
+                            </div>
+                            <span>Triangle</span>
+                            <p class="type-description">Narrow shoulders, wider hips</p>
+                        </div>
+                        <div class="type-option">
+                            <div class="type-image">
+                                <img src="assets/inverted-triangle-type.svg" alt="Inverted Triangle" class="body-shape">
+                                <img src="assets/triangle-outline.svg" alt="Triangle Outline" class="shape-outline">
+                            </div>
+                            <span>Inverted Triangle</span>
+                            <p class="type-description">Broader shoulders, narrow hips</p>
+                        </div>
+                        <div class="type-option">
+                            <div class="type-image">
+                                <img src="assets/apple-type.svg" alt="Apple Shape" class="body-shape">
+                                <img src="assets/apple-outline.svg" alt="Apple Outline" class="shape-outline">
+                            </div>
+                            <span>Apple Shape</span>
+                            <p class="type-description">Fuller midsection</p>
+                        </div>
+                        <div class="type-option">
+                            <div class="type-image">
+                                <img src="assets/hourglass-type.svg" alt="Hourglass" class="body-shape">
+                                <img src="assets/hourglass-outline.svg" alt="Hourglass Outline" class="shape-outline">
+                            </div>
+                            <span>Hourglass</span>
+                            <p class="type-description">Balanced top and bottom, defined waist</p>
+                        </div>
+                        <div class="type-option">
+                            <div class="type-image">
+                                <img src="assets/rectangle-type.svg" alt="Rectangle" class="body-shape">
+                                <img src="assets/rectangle-outline.svg" alt="Rectangle Outline" class="shape-outline">
+                            </div>
+                            <span>Rectangle</span>
+                            <p class="type-description">Straight up and down figure</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quiz-step" data-step="clothing">
+                    <h2>Preferred Style</h2>
+                    <div class="style-options">
+                        <div class="style-option">
+                            <label>
+                                <input type="checkbox" name="style" value="casual">
+                                <span>Casual</span>
+                            </label>
+                        </div>
+                        <div class="style-option">
+                            <label>
+                                <input type="checkbox" name="style" value="formal">
+                                <span>Formal</span>
+                            </label>
+                        </div>
+                        <div class="style-option">
+                            <label>
+                                <input type="checkbox" name="style" value="ethnic">
+                                <span>Ethnic</span>
+                            </label>
+                        </div>
+                        <div class="style-option">
+                            <label>
+                                <input type="checkbox" name="style" value="western">
+                                <span>Western</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="generate-button">Generate Your Style</button>
+        </section>
+
+        <section class="loading-screen" id="loadingScreen">
+            <div class="loading-text">generating the styles......</div>
+        </section>
+    </main>
+
+    <script>
+        // Check authentication on page load
+        if (!localStorage.getItem('isLoggedIn')) {
+            window.location.href = 'index.html';
+        }
+
+        // Logout function
+        function logout() {
+            localStorage.removeItem('isLoggedIn');
+            localStorage.removeItem('userEmail');
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
